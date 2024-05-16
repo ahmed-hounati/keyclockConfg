@@ -31,7 +31,7 @@ const AuthButtons = ({ setInfoMessage }) => {
   return (
     <div className="grid">
       <div className="col">
-        <Button onClick={() => { setInfoMessage(authenticated ? 'Authenticated: TRUE' : 'Authenticated: FALSE') }} className="m-1" label='Is Authenticated' />
+        <Button onClick={() => { setInfoMessage(keycloak.authenticated ? 'Authenticated: TRUE' : 'Authenticated: FALSE') }} className="m-1" label='Is Authenticated' />
         <Button onClick={() => { keycloak.login() }} className='m-1' label='Login' severity="success" />
         <Button onClick={() => { setInfoMessage(keycloak.token) }} className="m-1" label='Show Access Token' severity="info" />
         <Button onClick={() => { setInfoMessage(JSON.stringify(keycloak.tokenParsed)) }} className="m-1" label='Show Parsed Access token' severity="info" />
@@ -48,19 +48,19 @@ function App() {
 
   return (
 
-      <div className="App">
-        <div className='grid'>
-          <div className='col-12'>
-            <h1>My Awesome React App</h1>
-          </div>
-          <div className='col-12'>
-            <h1 id='app-header-2'>Secured with Keycloak</h1>
-          </div>
+    <div className="App">
+      <div className='grid'>
+        <div className='col-12'>
+          <h1>My Awesome React App</h1>
         </div>
-        <AuthButtons setInfoMessage={setInfoMessage} />
-        <InfoPane message={infoMessage} />
+        <div className='col-12'>
+          <h1 id='app-header-2'>Secured with Keycloak</h1>
+        </div>
       </div>
- );
+      <AuthButtons setInfoMessage={setInfoMessage} />
+      <InfoPane message={infoMessage} />
+    </div>
+  );
 }
 
 export default App;
